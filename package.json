@@ -16,5 +16,11 @@
     "bugs": {
         "url": "https://github.com/covbot/covbot/issues"
     },
-    "homepage": "https://github.com/covbot/covbot#readme"
+    "workspaces": [
+        "packages/**"
+    ],
+    "homepage": "https://github.com/covbot/covbot#readme",
+    "devDependencies": {
+        "turbo": "^1.0.23"
+    }
 }
