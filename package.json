@@ -1,6 +1,7 @@
 {
     "name": "covbot",
-    "version": "1.0.0",
+    "version": "0.0.0",
+    "private": true,
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -12,7 +13,7 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/covbot/covbot/issues"
     },
@@ -22,5 +23,14 @@
     "homepage": "https://github.com/covbot/covbot#readme",
     "devDependencies": {
         "turbo": "^1.0.23"
+    },
+    "turbo": {
+        "pipeline": {
+            "build": {
+                "dependsOn": [
+                    "^build"
+                ]
+            }
+        }
     }
 }
