@@ -3,9 +3,10 @@
     "version": "0.0.0",
     "private": true,
     "description": "",
-    "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "moon": "moon",
+        "postinstall": "node ./scripts/moon-patch.mjs && moon setup"
     },
     "repository": {
         "type": "git",
@@ -17,20 +18,12 @@
     "bugs": {
         "url": "https://github.com/covbot/covbot/issues"
     },
-    "workspaces": [
-        "packages/**"
-    ],
     "homepage": "https://github.com/covbot/covbot#readme",
     "devDependencies": {
-        "turbo": "^1.0.23"
+        "@moonrepo/cli": "^0.6.0"
     },
-    "turbo": {
-        "pipeline": {
-            "build": {
-                "dependsOn": [
-                    "^build"
-                ]
-            }
-        }
+    "dependencies": {
+        "@pnpm/link-bins": "^7.1.7",
+        "@pnpm/logger": "^4.0.0"
     }
 }

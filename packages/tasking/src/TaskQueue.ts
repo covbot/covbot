@@ -69,7 +69,7 @@ export class TaskQueue<TState = {}> {
         const queue = Object.values(this.taskRegistry).filter(
             ({ dependencies }) => dependencies.length === 0
         );
-        const state: Partial<TState> = {};
+        const state: Record<string, PromiseSettledResult<unknown>> = {};
         const taskRunStatus: Record<string, 'queued' | 'finished'> =
             Object.fromEntries(
                 Object.keys(this.taskRegistry).map((key) => [key, 'queued'])
@@ -125,6 +125,6 @@ export class TaskQueue<TState = {}> {
             }
         }
 
-        return state as TState;
+        return state as unknown as TState;
     };
 }
