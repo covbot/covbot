@@ -1,0 +1,35 @@
+$schema: 'https://moonrepo.dev/schemas/global-project.json'
+
+fileGroups:
+    configs:
+        - '*.{js,json}'
+    sources:
+        - 'src/**/*'
+        - 'types/**/*'
+    tests:
+        - 'tests/**/*.test.*'
+        - '**/__tests__/**/*'
+    assets:
+        - 'assets/**/*'
+        - 'images/**/*'
+        - 'static/**/*'
+        - '**/*.{scss,css}'
+        - '**/*.mdx'
+
+tasks:
+    build:
+        command: 'pnpm'
+        args: ['run', 'build']
+        deps: ['^:build']
+        env: {}
+        inputs: ['@globs(sources)', '@globs(configs)']
+        outputs: ['dist']
+    lint:
+        command: 'pnpm'
+        args: ['run', 'lint']
+        inputs: ['@globs(sources)', '@globs(configs)']
+    test:
+        command: 'pnpm'
+        args: ['run', 'test']
+        inputs: ['@globs(sources)', '@globs(configs)', '@globs(tests)']
+        deps: ['^:build']
